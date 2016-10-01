@@ -18,6 +18,9 @@
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
 </head>
 <body>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+<tilesx:useAttribute name="current"/>
+
  <div class="container">
  <!-- Static navbar -->
       <nav class="navbar navbar-default">
@@ -29,12 +32,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<spring:url value="/" />">JBA</a>
+            <a class="navbar-brand" href="<spring:url value="/index.html" />">JBA</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="<spring:url value="/" />">Home</a></li>
-              <li><a href="#">About</a></li>
+              <li class="${current=='index' ? 'active' :''}"><a href="<spring:url value="/index.html" />">Home</a></li>
+              <li class="${current=='users' ? 'active' :''}"><a href='<spring:url value="/users.html"></spring:url>'>Users</a></li>
               <li><a href="#">Contact</a></li>
               
             </ul>
@@ -43,13 +46,7 @@
       </nav>
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
+      
  
  
 <tiles:insertAttribute name="body"></tiles:insertAttribute>
